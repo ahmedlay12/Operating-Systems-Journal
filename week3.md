@@ -1,90 +1,43 @@
-Week 3 – Application Selection for Performance Testing
-Overview
+# Week 3 – Tooling Installation & System Preparation
 
-This week focused on selecting representative applications to evaluate operating system performance under different workload types. The objective was to assess how the Linux operating system behaves when subjected to CPU, memory, disk, and network intensive workloads, as well as a long-running server service.
+## Overview
 
-Each selected application represents a distinct resource profile to enable structured performance analysis in later testing phases.
+This week focused on preparing the Ubuntu Server system with essential tooling required for later performance testing and security assessment. Installing and verifying these tools at this stage ensures the environment is ready for controlled testing in subsequent weeks.
 
-Application Selection Matrix
-Application	Workload Type	Justification
-stress-ng	CPU & Memory Intensive	Widely used benchmarking tool capable of generating controlled CPU and RAM load to observe scheduling and memory management behaviour
-fio	Disk I/O Intensive	Industry-standard tool for testing disk throughput, latency, and I/O patterns
-iperf3	Network Intensive	Used to measure network throughput and latency between systems
-apache2	Server / Service Load	Represents a persistent network-facing service to observe process behaviour, resource usage, and service response under load
-Installation Documentation (SSH-Based)
+---
 
-All applications were installed remotely on the server via SSH using the system package manager.
+## Tool Selection Rationale
 
-Package Installation Commands
-sudo apt update
-sudo apt install -y stress-ng fio iperf3 apache2
+The following tools were selected to support later coursework activities:
 
+- **Apache2**  
+  Installed to provide a realistic network-facing service. This allows testing of firewall rules, service exposure, and future security hardening techniques.
 
-These commands ensure that all required tools are available for performance testing while maintaining a minimal and controlled server environment.
+- **iperf3**  
+  Installed to perform controlled network bandwidth and throughput testing between systems.
 
-Expected Resource Profiles
-stress-ng
+- **stress-ng**  
+  Installed to generate CPU and memory load in order to observe system behaviour under stress conditions.
 
-High CPU utilisation across available cores
+These tools establish a controlled and realistic baseline for later security and performance evaluation.
 
-Increased memory allocation depending on stress parameters
+---
 
-Useful for observing scheduler behaviour and memory pressure handling
+## Installation Verification
 
-fio
+The following command was used to verify that all required tools were successfully installed on the system:
 
-High disk read/write activity
-
-Increased I/O wait times under load
-
-Useful for evaluating disk performance and filesystem behaviour
-
-iperf3
-
-High network throughput during testing
-
-Minimal CPU and disk usage
-
-Useful for analysing network stack performance
-
-apache2
-
-Persistent background service
-
-Moderate memory footprint
-
-Network activity dependent on client requests
-
-Useful for observing long-running service behaviour and system stability
-
-Monitoring Strategy
-
-System performance will be monitored remotely from the workstation using standard command-line tools.
-
-Metrics to be Collected
-
-CPU usage
-
-Memory usage
-
-Disk I/O activity
-
-Network throughput
-
-Process behaviour
-
-Monitoring Tools
-top
-htop
-vmstat
-iostat
-ss
+```bash
+dpkg -l | grep -E "stress-ng|iperf3|apache2"
+```
 
 
-These tools provide real-time and summary statistics that will be recorded during baseline and load testing in the next phase.
+
+Evidence: Screenshot showing installed apache2, iperf3, and stress-ng packages with visible adminuser@os-server command prompt.
+
+<img width="452" height="142" alt="image" src="https://github.com/user-attachments/assets/37bd71c7-4599-48fd-af33-0a7fced996b7" />
+
 
 Reflection
 
-This week established a structured foundation for performance evaluation by selecting applications that stress different operating system subsystems. Defining expected resource profiles in advance allows meaningful comparison between baseline and load conditions.
-
-This preparation ensures that subsequent performance testing and optimisation efforts can be measured objectively and linked directly to operating system behaviour.
+Completing tool installation and verification during this week ensures that later performance testing and security hardening can be carried out without configuration uncertainty. This structured preparation reduces risk and supports reliable analysis in subsequent coursework phases.
