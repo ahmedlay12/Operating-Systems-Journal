@@ -58,26 +58,26 @@ This option allows native SSH access without additional virtual machines, reduce
 
 ---
 
-## 5. Baseline System Specifications (CLI Evidence)
+5. Baseline System Specifications (CLI Evidence)
 
 Baseline system specifications were captured to establish a reference point for later security hardening and performance analysis.
 
-### Operating System and Kernel
+Operating System and Kernel
 
 Commands used:
 
-```md
-```bash
 uname -a
 lsb_release -a
 
 
+<img width="408" height="87" alt="image" src="https://github.com/user-attachments/assets/b70a5080-8953-44f1-8a44-dcef43f27fdc" />
 
-<img width="401" height="98" alt="Screenshot 2025-12-13 122335" src="https://github.com/user-attachments/assets/cb68660a-5540-46ac-9613-fb1f55738e38" />
-
+(Screenshot showing uname -a and lsb_release -a output with visible adminuser@os-server prompt)
 
 Challenges Encountered
-During initial setup, the NAT interface did not consistently initialise automatically after reboot. This was resolved by manually bringing the interface up and renewing the DHCP lease.
+
+During initial setup, the NAT interface did not consistently initialise automatically after reboot. This issue was resolved by manually bringing the interface up and renewing the DHCP lease.
 
 Reflection
-This week established the foundational architecture for the coursework by enforcing remote administration via SSH and separating management traffic from outbound connectivity. Capturing baseline specifications provides a stable reference point for future security and performance evaluation.
+
+This week established the foundational architecture for the coursework by enforcing remote administration via SSH and separating management traffic from outbound connectivity. Capturing baseline specifications provides a stable reference point for future security hardening and performance evaluation.
