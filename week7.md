@@ -8,9 +8,9 @@ This week focused on monitoring and analysing system logs to identify authentica
 Linux authentication logs were reviewed to examine SSH login activity and verify that access controls are functioning as expected.
 
 Command executed:
-
+```bash
 sudo cat /var/log/auth.log | tail -n 20
-
+```
 
 <img width="404" height="304" alt="image" src="https://github.com/user-attachments/assets/d50beb1c-b32e-4ea1-b5ee-efd9071f50e5" />
 
@@ -24,25 +24,25 @@ The authentication log records successful and failed login attempts, privilege e
 To specifically check for failed authentication attempts, the log was filtered to highlight unsuccessful SSH access.
 
 Command executed:
-
+```bash
 sudo grep "Failed password" /var/log/auth.log
-
+```
 
 <img width="402" height="40" alt="image" src="https://github.com/user-attachments/assets/f84e56ea-1d29-4473-b2ed-2fe215bf75f9" />
 
 (Screenshot showing failed SSH login attempts or no output if none are present)
 
 Explanation:
-The absence of repeated failed login attempts indicates that brute-force attacks are either not occurring or are being effectively mitigated by Fail2Ban.
+The absence of repeated failed login attempts suggests that brute-force activity is either not present or is being effectively mitigated by the Fail2Ban SSH jail.
 
 3. Fail2Ban Log Verification
 
 Fail2Ban logs were reviewed to confirm that intrusion prevention mechanisms are actively monitoring authentication events.
 
 Command executed:
-
+```bash
 sudo cat /var/log/fail2ban.log | tail -n 20
-
+```
 <img width="407" height="213" alt="image" src="https://github.com/user-attachments/assets/9b0ac95a-1c90-4f4e-a72d-ba0013bf94e9" />
 
 (Screenshot showing Fail2Ban monitoring activity with visible adminuser@os-server prompt)
@@ -55,9 +55,9 @@ Fail2Ban logs provide insight into detected threats, banned IP addresses, and ja
 The system journal was queried to review recent security-relevant system events.
 
 Command executed:
-
+```bash
 sudo journalctl -xe | tail -n 20
-
+```
 
 <img width="404" height="305" alt="image" src="https://github.com/user-attachments/assets/4b384d1b-9e2b-4f76-be10-965bd8ce55e7" />
 
@@ -68,4 +68,4 @@ The system journal consolidates logs from multiple services, allowing efficient 
 
 Reflection
 
-Regular log monitoring provides visibility into system activity and strengthens incident detection capabilities. By analysing authentication logs, Fail2Ban activity, and system journal entries, potential security threats can be identified early, reducing response time and limiting impact. This week reinforces the importance of logs as both a preventative and investigative security control.
+Log analysis in this week validates the effectiveness of SSH hardening and Fail2Ban controls implemented in Weeks 4 and 5. Regular log monitoring provides visibility into system activity and strengthens incident detection capabilities. By analysing authentication logs, Fail2Ban activity, and system journal entries, potential security threats can be identified early, reducing response time and limiting impact. This week reinforces the importance of logs as both a preventative and investigative security control.
