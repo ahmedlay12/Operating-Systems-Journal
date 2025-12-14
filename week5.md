@@ -10,9 +10,9 @@ Ubuntu Server uses AppArmor to enforce Mandatory Access Control (MAC), restricti
 Verification of AppArmor Status
 
 The following command was used to confirm that AppArmor is enabled and enforcing policies:
-
+```bash
 sudo aa-status
-
+```
 
 <img width="403" height="302" alt="image" src="https://github.com/user-attachments/assets/121b30cc-828c-40b7-ad39-9646bb34cb38" />
 
@@ -29,9 +29,9 @@ Automatic security updates were configured to ensure timely installation of crit
 Verification of Unattended Upgrades
 
 The following command was used to confirm unattended upgrades are enabled:
-
+```bash
 systemctl status unattended-upgrades
-
+```
 
 <img width="407" height="118" alt="image" src="https://github.com/user-attachments/assets/ff8527de-95c7-478f-8952-56680b1ebe99" />
 
@@ -48,9 +48,9 @@ Fail2Ban was configured to detect repeated failed login attempts and automatical
 Fail2Ban Service Status
 
 The following command verified that Fail2Ban is active:
-
+```bash
 sudo systemctl status fail2ban
-
+```
 <img width="383" height="133" alt="image" src="https://github.com/user-attachments/assets/c94c2f30-0d42-4f74-89d6-7ac79bb6e05f" />
 
 Screenshot showing Fail2Ban service active and running.
@@ -58,9 +58,9 @@ Screenshot showing Fail2Ban service active and running.
 SSH Jail Verification
 
 The following command was used to verify the SSH jail configuration:
-
+```bash
 sudo fail2ban-client status sshd
-
+```
 
 <img width="303" height="119" alt="image" src="https://github.com/user-attachments/assets/a251ab54-dc9c-4700-9df9-85462be05458" />
 
@@ -103,7 +103,7 @@ Screenshot showing successful execution of security-baseline.sh with pass/fail o
 
 5) Remote Monitoring via SSH
 
-A remote monitoring process was implemented to collect live performance metrics from the server via SSH. This approach reflects real-world system administration practices, where servers are monitored and managed remotely without direct console access.
+A remote monitoring process was implemented to collect live performance metrics from the server via SSH. This approach reflects real-world system administration practices, where servers are monitored and managed remotely without direct console access. Monitoring was performed from the workstation to reinforce the separation between management and server environments.
 
 #### Metrics Collected
 The following system metrics were retrieved remotely to assess operational health and resource utilisation:
