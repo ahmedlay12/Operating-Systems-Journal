@@ -38,6 +38,7 @@ Evidence: Screenshot showing installed apache2, iperf3, and stress-ng packages w
 <img width="452" height="142" alt="image" src="https://github.com/user-attachments/assets/37bd71c7-4599-48fd-af33-0a7fced996b7" />
 
 
+
 Reflection
 
-Completing tool installation and verification during this week ensures that later performance testing and security hardening can be carried out without configuration uncertainty. This structured preparation reduces risk and supports reliable analysis in subsequent coursework phases.
+Completing tool installation and verification at this stage ensures the system is fully prepared for controlled performance testing and security hardening in later weeks. Establishing this tooling baseline reduces configuration uncertainty and allows observed changes in system behaviour to be directly attributed to implemented security controls.
