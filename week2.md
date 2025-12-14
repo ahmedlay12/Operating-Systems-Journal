@@ -1,71 +1,93 @@
 Week 2 – Security Baseline & Threat Assessment
-Security Baseline Assessment
+Overview
 
-A baseline security assessment was conducted to identify the system’s exposure prior to implementing hardening controls. This establishes a reference point for later comparison and validation of security improvements.
+A baseline security assessment was conducted to identify the system’s exposure prior to implementing hardening controls. This establishes a reference point for later comparison and validation of security improvements introduced in subsequent weeks.
 
-Firewall Status
+1. Firewall Status (UFW)
 
-The Uncomplicated Firewall (UFW) was verified to be active. At this stage, only SSH traffic is permitted to allow remote administration.
+The Uncomplicated Firewall (UFW) was verified to be active to enforce basic network-level protection.
 
-SSH (TCP port 22) is allowed for both IPv4 and IPv6
+SSH (TCP port 22) is permitted for both IPv4 and IPv6 to allow remote administration
 
 All other inbound traffic is denied by default
 
 This configuration minimises the attack surface while maintaining required management access.
 
-<img width="416" height="284" alt="image" src="https://github.com/user-attachments/assets/ff78ff56-3b17-4564-af5f-8f0ddd29153f" />
+Command used:
 
-Evidence: Screenshot showing sudo ufw status output with active firewall and port 22 allowed.
+sudo ufw status
 
-SSH Service Status
+<img width="320" height="96" alt="image" src="https://github.com/user-attachments/assets/b9b99f70-731a-4813-8058-4b0b1ef4a198" />
 
-The SSH service was confirmed to be running and enabled at system startup. This allows secure remote administration of the headless server.
+
+(Screenshot showing sudo ufw status with firewall active and port 22 allowed)
+
+2. SSH Service Status
+
+The SSH service was confirmed to be running and enabled at system startup. This ensures secure remote administration of the headless server.
 
 SSH daemon is active and listening on port 22
 
 Service is enabled to start automatically at boot
 
-<img width="416" height="284" alt="image" src="https://github.com/user-attachments/assets/ff78ff56-3b17-4564-af5f-8f0ddd29153f" />
+Command used:
 
-Evidence: Screenshot showing sudo systemctl status ssh output.
+sudo systemctl status ssh
 
-Open Ports and Listening Services
 
-Network sockets were inspected to identify active listening services.
+<img width="383" height="158" alt="image" src="https://github.com/user-attachments/assets/19c23d5d-7af8-4776-bfdf-4c1bbf6bb894" />
+
+(Screenshot showing sudo systemctl status ssh with service active and running)
+
+3. Open Ports and Listening Services
+
+Network sockets were inspected to identify active listening services on the system.
 
 Only SSH (port 22) is listening on all interfaces
 
-No unnecessary services were detected
+No unnecessary or unintended services were detected
 
-This confirms that the system is not exposing unintended network services.
+This confirms that the system is not exposing additional services that could increase the attack surface.
 
-<img width="416" height="284" alt="image" src="https://github.com/user-attachments/assets/ff78ff56-3b17-4564-af5f-8f0ddd29153f" />
+Command used:
 
-Evidence: Screenshot showing sudo ss -tuln output.
+sudo ss -tuln
 
-Threat Identification
+
+<img width="401" height="77" alt="image" src="https://github.com/user-attachments/assets/13e99e54-65b6-4e0a-9d19-c734b390df20" />
+
+(Screenshot showing sudo ss -tuln output with only port 22 listening)
+
+4. Threat Identification
 
 Based on the baseline assessment, the following threats were identified:
 
-Threat	Risk Description	Potential Impact
-SSH brute-force attacks	Automated login attempts against SSH	Unauthorised access
-Credential compromise	Weak or reused passwords	Privilege escalation
-Network exposure	Services listening on all interfaces	Remote exploitation
-Lack of monitoring	Attacks may go unnoticed	Delayed response
-Planned Mitigations
+SSH brute-force attacks
+Automated login attempts targeting SSH could lead to unauthorised access
 
-The following controls will be implemented in later weeks:
+Weak or reused credentials
+Increases the risk of privilege escalation
 
-SSH hardening (disable root login, limit authentication methods)
+Network exposure
+Services listening on all interfaces could allow remote exploitation
+
+Lack of intrusion detection
+Attacks may go unnoticed, resulting in delayed response
+
+5. Planned Mitigations
+
+To address the identified risks, the following controls will be implemented in later weeks:
+
+SSH hardening (disable root login, restrict allowed users)
 
 Intrusion prevention using Fail2Ban
 
 Firewall rule refinement
 
-Improved logging and monitoring of authentication events
+Enhanced logging and monitoring of authentication events
 
-These mitigations aim to reduce the likelihood and impact of identified threats.
+These mitigations aim to reduce both the likelihood and impact of identified threats.
 
 Reflection
 
-This week established a clear security baseline for the system. Verifying firewall rules, active services, and exposed ports provided visibility into the system’s initial risk posture. Identifying realistic threats at this stage ensures that future hardening steps are targeted and measurable.
+This week established a clear security baseline for the system. Verifying firewall rules, active services, and exposed ports provided visibility into the system’s initial risk posture. Identifying realistic threats at this stage ensures that future hardening steps are targeted, measurable, and aligned with real-world attack scenarios.
