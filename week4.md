@@ -18,6 +18,7 @@ Privilege escalation via root login
 Leaving default SSH configurations in place significantly increases exposure. Therefore, proactive hardening was required before introducing further services or performance testing.
 
 SSH Hardening Measures Implemented
+
 Disable Root Login
 
 Direct root login over SSH was disabled to prevent attackers from attempting privileged access directly.
@@ -53,16 +54,17 @@ Configuration Verification
 
 The active SSH configuration was verified using the following commands.
 
+```bash
 sudo sshd -T | grep permitrootlogin
-
+```
 
 <img width="303" height="44" alt="image" src="https://github.com/user-attachments/assets/1e57275d-e809-41a2-b1bf-c85bde479546" />
 
 Screenshot showing permitrootlogin no with visible adminuser@os-server prompt
 
-
+```bash
 sudo sshd -T | grep allowusers
-
+```
 
 <img width="272" height="37" alt="image" src="https://github.com/user-attachments/assets/e2a667b7-2d6f-4271-a405-1154fb005268" />
 
@@ -73,8 +75,9 @@ Service Status Validation
 
 The SSH service status was checked to confirm it was running correctly after hardening.
 
+```bash
 sudo systemctl status ssh
-
+```
 
 <img width="358" height="152" alt="image" src="https://github.com/user-attachments/assets/990c214a-0b12-46ef-8203-f6d4d1b0a998" />
 
