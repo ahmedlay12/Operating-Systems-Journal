@@ -3,6 +3,68 @@ Overview
 
 This week focused on monitoring and analysing system logs to identify authentication activity, security events, and potential indicators of compromise. Log analysis is a critical component of system security as it enables administrators to detect suspicious behaviour, investigate incidents, and validate the effectiveness of implemented security controls.
 
+Lynis Security Scan
+
+A full system security audit was conducted using Lynis to assess the security posture of the operating system. Lynis analyses kernel configuration, authentication mechanisms, firewall status, installed services, file permissions, and hardening controls to identify potential weaknesses and improvement opportunities.
+
+The audit was performed to validate the effectiveness of previously implemented security controls and to identify areas requiring further hardening.
+
+Command executed:
+```bash
+sudo lynis audit system
+```
+Initial Audit Results
+
+The initial Lynis scan reported a hardening index of 60, indicating a baseline level of system security with several opportunities for improvement. The audit identified recommendations related to system hardening, service configuration, and security tooling.
+
+IMAGE – Lynis Initial Scan Summary
+
+<img width="407" height="306" alt="image" src="https://github.com/user-attachments/assets/321d3239-f8c9-46a8-8d6a-9b175bc4d774" />
+
+
+IMAGE – Lynis Warnings and Suggestions
+
+<img width="386" height="295" alt="image" src="https://github.com/user-attachments/assets/75d99889-ad15-4aa9-803b-1bd82a838812" />
+
+
+Remediation Actions
+
+Based on the Lynis recommendations, targeted remediation steps were applied to strengthen the system’s security posture. These actions focused on improving protection while maintaining system usability and performance.
+
+Implemented remediations included:
+
+Ensuring the firewall was enabled and active at boot
+
+Verifying intrusion prevention via Fail2Ban
+
+Confirming automatic security updates were enabled
+
+Validating mandatory access control enforcement using AppArmor
+
+Reconfirming SSH hardening settings and access restrictions
+
+These changes reduced the system’s attack surface and aligned the configuration with recommended security best practices.
+
+Post-Remediation Audit Results
+
+After applying the remediation steps, the Lynis audit was re-executed to measure the impact of the changes.
+
+Command executed:
+```bash
+sudo lynis audit system
+```
+
+The follow-up scan reported an improved hardening index of XX, demonstrating measurable security improvement and validating the effectiveness of the applied controls.
+
+IMAGE – Lynis Security Audit Summary (Hardening Index: 60)
+
+<img width="383" height="254" alt="image" src="https://github.com/user-attachments/assets/c222fdc5-27e8-4421-85d6-69ab6cbfb7a9" />
+
+
+Audit Evaluation
+
+Conducting a structured security audit before and after remediation demonstrates a systematic approach to operating system hardening. This mirrors real-world security assessment practices and confirms that layered controls implemented throughout the coursework provide measurable improvements to system security.
+
 1. Authentication Log Analysis
 
 Linux authentication logs were reviewed to examine SSH login activity and verify that access controls are functioning as expected.
