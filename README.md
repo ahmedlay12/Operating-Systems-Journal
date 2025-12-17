@@ -7,7 +7,7 @@ The journal documents the planning, configuration, security hardening, performan
 ## Journal Access
 The full technical journal is published via GitHub Pages:
 
-➡️ **https://ahmedlay12.github.io/Operating-Systems-Journal/**
+**https://ahmedlay12.github.io/Operating-Systems-Journal/**
 
 ## Structure
 - Week 1–7: Weekly technical journal entries
